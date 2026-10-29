@@ -2,12 +2,27 @@
 const Store = (() => {
   const KEY = "wms-workers-v3";   // bump when data shape changes
 
+  // Fill missing fields so older / imported records render safely
+  const normalise = w => ({
+    ...w,
+    empId: String(w.empId ?? ""), name: String(w.name || "Unknown"), photo: w.photo || "",
+    inductionStatus: w.inductionStatus || "Pending", ojtStatus: w.ojtStatus || "Pending",
+    skillLevel: Number(w.skillLevel) || 1,
+    assessments: Array.isArray(w.assessments) ? w.assessments : [],
+    trainings: Array.isArray(w.trainings) ? w.trainings : [],
+  });
+
   function load() {
     try {
       const saved = localStorage.getItem(KEY);
-      if (saved) return JSON.parse(saved);
-    } catch (e) { /* storage unavailable – fall back to dummy data */ }
-    return WORKERS;
+      if (saved) return JSON.parse(saved).map(normalise);
+    } catch (e) { /* storage unavailable / corrupt – fall back to dummy data */ }
+    return WORKERS.map(normalise);
+  }
+
+  // Back to the bundled dummy data (clears imports & edits in this browser)
+  function reset() {
+    try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
   }
 
   function save(workers) {
@@ -37,5 +52,5 @@ const Store = (() => {
     return workers;
   }
 
-  return { load, save, importExcel };
+  return { load, save, reset, importExcel };
 })();

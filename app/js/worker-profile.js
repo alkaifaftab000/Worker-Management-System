@@ -10,8 +10,6 @@
     return;
   }
 
-  const addDays = (iso, d) => { const x = new Date(iso); x.setDate(x.getDate() + d); return x.toISOString().slice(0, 10); };
-
   // Day 1 joining + induction, Day 2-4 OJT, Day 5+ on line
   function journey() {
     const indDone = w.inductionStatus === "Done";

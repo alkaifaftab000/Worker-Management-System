@@ -24,6 +24,9 @@
         ${icon('<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>')}<span>Import Excel</span>
         <input type="file" id="excel-input" accept=".xlsx,.xls" hidden>
       </label>
+      <button type="button" class="nav-item" id="reset-data" title="Reset demo data">
+        ${icon('<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>')}<span>Reset demo data</span>
+      </button>
     </nav>
     <button class="admin-card" id="admin-card" title="Edit profile">
       <img id="admin-photo" src="" alt="">
@@ -45,6 +48,12 @@
   sidebar.querySelectorAll("a.nav-item").forEach(a =>
     a.addEventListener("click", () => { if (innerWidth <= 768) sidebar.classList.remove("open"); })
   );
+
+  document.getElementById("reset-data").addEventListener("click", () => {
+    if (!confirm("Reset to the original demo data? Imports and edits in this browser will be removed.")) return;
+    Store.reset();
+    location.reload();
+  });
 
   document.getElementById("excel-input").addEventListener("change", async e => {
     const file = e.target.files[0];

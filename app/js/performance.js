@@ -3,8 +3,6 @@
 const Performance = (() => {
   let chart;
 
-  const addDays = (iso, d) => { const x = new Date(iso); x.setDate(x.getDate() + d); return x.toISOString().slice(0, 10); };
-
   function nextAssessment(w) {
     if (w.ojtStatus !== "Done") return "After OJT";
     const last = w.assessments?.at(-1)?.date || w.doj;

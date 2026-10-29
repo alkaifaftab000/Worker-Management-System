@@ -2,8 +2,16 @@
 const SKILL_LABELS = { 1: "Unskilled", 2: "Semi-skilled", 3: "Skilled", 4: "Multi-skilled" };
 
 function formatDate(iso) {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  const d = new Date(iso);
+  if (!iso || isNaN(d)) return iso || "—";
+  return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+function addDays(iso, days) {
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0, 10);
 }
 
 // "In Progress" -> class "progress"

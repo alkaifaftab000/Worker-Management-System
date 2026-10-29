@@ -86,6 +86,15 @@ function timelineStep(title, statusKey, scoreKey, w) {
 }
 
 function renderDetail() {
+  try { drawDetail(); }
+  catch (err) {
+    console.error(err);
+    el("detail").innerHTML = `<div class="empty-detail">Could not show this worker (${err.message}).<br>
+      Saved data in this browser may be outdated – use <b>Reset demo data</b> in the sidebar.</div>`;
+  }
+}
+
+function drawDetail() {
   const w = current();
   const panel = el("detail");
   if (!w) { panel.innerHTML = `<div class="empty-detail">Select a worker to see details</div>`; return; }

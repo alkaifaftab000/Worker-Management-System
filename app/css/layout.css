@@ -33,6 +33,7 @@
   font-size: .95rem;
 }
 .nav-item svg { stroke: #c9d0ea; }
+button.nav-item { background: none; border: none; font: inherit; width: 100%; text-align: left; }
 .nav-item:hover { background: rgba(255, 255, 255, .08); color: #fff; }
 .nav-item.active { background: var(--orange); color: #fff; }
 .nav-item.active svg, .nav-item:hover svg { stroke: #fff; }
