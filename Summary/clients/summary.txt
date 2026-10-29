@@ -1,0 +1,27 @@
+28 Oct ILJIN
+
+SOP for each worker production line
+Customer wants to know if the worker on job is skilled enough?- worker skill matrix
+
+
+Hiring process
+Step 1: Hire> HR Induction> Day 1 joining day> Passing marks
+
+Requirements:
+Excel Employee Data 
+Skill Matrix
+
+Productivity: 
+Conversion per manhour
+Cost of poor quality
+People availability (absenteeism rate, attrition ~ 30%)
+Goal Productivity improvement
+______
+Step 2: OJT On job training
+3 day training (person gets appointed on a production line)
+
+Hiring can also happen daily
+
+Officenet- Employee data
+
+Employee training - no 

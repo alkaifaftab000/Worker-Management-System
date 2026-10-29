@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" fill="none">
+  <!-- circuit traces -->
+  <g stroke="#f26522" stroke-width="2" stroke-linecap="round" opacity=".55">
+    <path d="M100 130H40V70"/><circle cx="40" cy="64" r="5" fill="#f26522"/>
+    <path d="M100 190H20"/><circle cx="14" cy="190" r="5" fill="#f26522"/>
+    <path d="M220 130h50V60"/><circle cx="270" cy="54" r="5" fill="#f26522"/>
+    <path d="M220 190h60v60"/><circle cx="280" cy="256" r="5" fill="#f26522"/>
+    <path d="M140 100V30h-40"/><circle cx="94" cy="30" r="5" fill="#f26522"/>
+    <path d="M180 220v70h50"/><circle cx="236" cy="290" r="5" fill="#f26522"/>
+  </g>
+  <!-- pins -->
+  <g fill="#8a95c9">
+    <rect x="120" y="86" width="8" height="14" rx="2"/><rect x="146" y="86" width="8" height="14" rx="2"/><rect x="172" y="86" width="8" height="14" rx="2"/><rect x="198" y="86" width="8" height="14" rx="2"/>
+    <rect x="120" y="220" width="8" height="14" rx="2"/><rect x="146" y="220" width="8" height="14" rx="2"/><rect x="172" y="220" width="8" height="14" rx="2"/><rect x="198" y="220" width="8" height="14" rx="2"/>
+    <rect x="86" y="120" width="14" height="8" rx="2"/><rect x="86" y="146" width="14" height="8" rx="2"/><rect x="86" y="172" width="14" height="8" rx="2"/><rect x="86" y="198" width="14" height="8" rx="2"/>
+    <rect x="220" y="120" width="14" height="8" rx="2"/><rect x="220" y="146" width="14" height="8" rx="2"/><rect x="220" y="172" width="14" height="8" rx="2"/><rect x="220" y="198" width="14" height="8" rx="2"/>
+  </g>
+  <!-- chip body -->
+  <rect x="100" y="100" width="120" height="120" rx="12" fill="#1d2c8f" stroke="#8a95c9" stroke-width="2"/>
+  <rect x="125" y="125" width="70" height="70" rx="6" fill="none" stroke="#f26522" stroke-width="2"/>
+  <path d="M160 140l20 20-20 20-20-20z" fill="#f26522"/>
+</svg>

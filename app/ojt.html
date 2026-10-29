@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILJIN WMS – OJT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/test.css">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/ojt.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar" data-page="ojt"></aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1>On-the-Job Training (OJT)</h1>
+        <p class="sub">3-day OJT – General + process-wise training & test</p>
+      </div>
+      <div class="top-actions"><div id="lang"></div></div>
+    </header>
+
+    <!-- Process tabs -->
+    <nav class="ojt-tabs" id="ojt-tabs"></nav>
+
+    <section class="ojt-panel">
+      <div class="ojt-intro" id="ojt-intro"></div>
+
+      <h3 class="block-title">3-Day Plan</h3>
+      <div class="plan" id="plan"></div>
+
+      <h3 class="block-title">Training Material</h3>
+      <div class="material" id="ojt-material"></div>
+    </section>
+
+    <section class="test-wrap" id="ojt-test">
+      <header class="test-header">
+        <div>
+          <h2 id="test-title">OJT Test</h2>
+          <p>MCQ + subjective · scan QR or enter Employee ID</p>
+        </div>
+        <span class="doc">Doc 01-HRD40-F-36</span>
+      </header>
+      <div class="test-upload" id="test-upload"></div>
+      <div class="test-body" id="test-body"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/data/workers.js"></script>
+  <script src="js/data/ojt.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/uploads.js"></script>
+  <script src="js/test-engine.js"></script>
+  <script src="js/ojt.js"></script>
+</body>
+</html>

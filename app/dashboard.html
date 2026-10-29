@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILJIN WMS – HR Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar" data-page="dashboard"></aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1>HR Dashboard</h1>
+        <p class="sub">Worker onboarding & skill overview</p>
+      </div>
+    </header>
+
+    <!-- KPI cards -->
+    <section class="kpis" id="kpis"></section>
+
+    <!-- Charts -->
+    <section class="charts">
+      <div class="chart-card">
+        <div class="chart-head"><h2>Skill Level by Department</h2><span>Workers per level</span></div>
+        <div class="chart-box"><canvas id="chart-skill"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-head"><h2>Onboarding Status</h2><span>Induction → OJT</span></div>
+        <div class="chart-box"><canvas id="chart-onboard"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <input type="search" id="f-search" placeholder="Search name or ID…">
+      <select id="f-dept"><option value="">All Departments</option></select>
+      <select id="f-func"><option value="">All Processes</option></select>
+      <select id="f-ojt">
+        <option value="">OJT: All</option><option>Pending</option><option>Done</option><option>Failed</option>
+      </select>
+      <select id="f-skill">
+        <option value="">Skill: All</option>
+        <option value="1">Unskilled (L1)</option><option value="2">Semi-skilled (L2)</option>
+        <option value="3">Skilled (L3)</option><option value="4">Multi-skilled (L4)</option>
+      </select>
+      <button class="reset-btn" id="f-reset">Reset</button>
+    </section>
+
+    <!-- Worker list -->
+    <section class="table-card">
+      <div class="table-head"><h2>Workers</h2><span id="count" class="count"></span></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Worker</th><th>Department</th><th>Process</th><th>Line</th><th>DOJ</th><th>Induction</th><th>OJT</th><th>Skill</th></tr>
+          </thead>
+          <tbody id="worker-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Worker profile drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true"></aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/data/workers.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

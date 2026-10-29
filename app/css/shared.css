@@ -1,0 +1,32 @@
+/* Bilingual text: show selected language; in .dual blocks show the other one small below */
+body.lang-hi .bi > .en, body.lang-en .bi > .hi { display: none; }
+body .dual .bi > .en, body .dual .bi > .hi { display: block; }
+body.lang-hi .dual .bi > .en, body.lang-en .dual .bi > .hi { font-size: .85em; color: var(--muted); font-weight: 400; }
+body.lang-en .dual .bi { display: flex; flex-direction: column; }
+body.lang-en .dual .bi > .en { order: -1; }
+
+/* Language toggle */
+.top-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lang-toggle { display: inline-flex; background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.lang-toggle button { border: none; background: none; padding: 8px 14px; font: 600 .88rem var(--font); color: var(--muted); cursor: pointer; }
+.lang-toggle button.active { background: var(--navy); color: #fff; }
+
+/* Upload bars (PPT / test paper) */
+.material { margin-bottom: 16px; }
+.upload-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #fff; border: 1px dashed #c7cde0; border-radius: 10px; padding: 10px 14px; }
+.up-ico { font-size: 1.3rem; }
+.up-info { flex: 1; min-width: 180px; display: flex; flex-direction: column; }
+.up-info b { color: var(--navy); font-size: .92rem; }
+.up-info small { color: var(--muted); font-size: .78rem; }
+.up-btn { background: var(--orange); color: #fff; padding: 7px 14px; border-radius: 8px; font: 600 .85rem var(--font); cursor: pointer; }
+.up-btn:hover { background: var(--orange-dark); }
+.up-link { background: none; border: none; color: var(--navy); font: 600 .85rem var(--font); cursor: pointer; text-decoration: underline; }
+.up-hint { font-size: .82rem; color: var(--muted); margin-top: 8px; }
+.pdf-view { width: 100%; height: 520px; border: 1px solid var(--border); border-radius: 10px; margin-top: 10px; background: #fff; }
+.test-upload { padding: 14px 24px 0; }
+.test-upload .upload-bar { background: #f7f8fc; }
+
+@media (max-width: 600px) {
+  .pdf-view { height: 380px; }
+  .test-upload { padding: 12px 16px 0; }
+}

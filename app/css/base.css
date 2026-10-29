@@ -1,0 +1,48 @@
+/* ILJIN brand theme – colours taken from logo & iljin.co.in */
+:root {
+  --navy: #1d2c8f;
+  --navy-dark: #0b1a5c;
+  --orange: #f26522;
+  --orange-dark: #d9531a;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #333;
+  --muted: #6b7280;
+  --border: #d6dbe6;
+  --error: #c0392b;
+  --success: #1e8449;
+  --font: "Figtree", "Noto Sans Devanagari", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--orange);
+  color: #fff;
+  font: 600 1rem var(--font);
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn:hover { background: var(--orange-dark); }
+
+/* Orange underline accent, as on iljin.co.in banners */
+.accent-line {
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--navy), var(--orange));
+  border-radius: 2px;
+}

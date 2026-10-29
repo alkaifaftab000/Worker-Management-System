@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILJIN WMS – Workers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/workers.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar" data-page="workers"></aside>
+
+  <main class="main workers-main">
+    <header class="topbar">
+      <div>
+        <h1>Workers</h1>
+        <p class="sub">Browse, view and edit worker profiles</p>
+      </div>
+    </header>
+
+    <div class="split">
+      <!-- Left: worker list -->
+      <section class="list-panel">
+        <div class="list-tools">
+          <input type="search" id="f-search" placeholder="Search name, ID, line…">
+          <div class="list-filters">
+            <select id="f-dept"><option value="">All Departments</option></select>
+            <select id="f-ojt">
+              <option value="">OJT: All</option><option>Pending</option><option>Done</option><option>Failed</option>
+            </select>
+            <select id="f-skill">
+              <option value="">Skill: All</option>
+              <option value="1">L1 Unskilled</option><option value="2">L2 Semi-skilled</option>
+              <option value="3">L3 Skilled</option><option value="4">L4 Multi-skilled</option>
+            </select>
+          </div>
+          <div class="list-meta"><span id="count"></span></div>
+        </div>
+        <ul class="worker-list" id="worker-list"></ul>
+      </section>
+
+      <!-- Right: always-open detail panel -->
+      <section class="detail-panel" id="detail"></section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/data/workers.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/performance.js"></script>
+  <script src="js/workers.js"></script>
+</body>
+</html>
