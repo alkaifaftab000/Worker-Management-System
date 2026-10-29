@@ -6,7 +6,7 @@ let pendingPhoto = null;
 
 const el = id => document.getElementById(id);
 const filters = { search: el("f-search"), dept: el("f-dept"), ojt: el("f-ojt"), skill: el("f-skill") };
-const STATUSES = ["Pending", "Done", "Failed"];
+const STATUSES = ["Pending", "In Progress", "Done", "Failed"];
 
 // Field layout for the detail panel (view + edit)
 const SECTIONS = [
@@ -82,7 +82,7 @@ function timelineStep(title, statusKey, scoreKey, w) {
     ? `<select name="${statusKey}">${STATUSES.map(s => `<option ${s === status ? "selected" : ""}>${s}</option>`).join("")}</select>
        <input name="${scoreKey}" type="number" min="0" max="20" placeholder="Score" value="${w[scoreKey] ?? ""}" style="margin-top:6px">`
     : `<div class="s">${w[scoreKey] ?? "—"}</div>${statusBadge(status)}`;
-  return `<div class="tl-step ${status.toLowerCase()} field"><div class="t">${title}</div>${body}</div>`;
+  return `<div class="tl-step ${statusClass(status)} field"><div class="t">${title}</div>${body}</div>`;
 }
 
 function renderDetail() {
@@ -107,7 +107,7 @@ function renderDetail() {
             ? `<div class="field"><input name="name" value="${w.name}" required style="font-size:1.1rem"></div>`
             : `<h2>${w.name}</h2>`}
           <p class="sub">${w.empId} · ${w.department} – ${w.function} · ${w.line}</p>
-          <div class="hero-badges">${skillBadge(w.skillLevel)} ${statusBadge("Induction " + w.inductionStatus).replace(/badge [a-z ]+"/, `badge ${w.inductionStatus.toLowerCase()}"`)} ${statusBadge("OJT " + w.ojtStatus).replace(/badge [a-z ]+"/, `badge ${w.ojtStatus.toLowerCase()}"`)}</div>
+          <div class="hero-badges">${skillBadge(w.skillLevel)} ${statusBadge(w.inductionStatus, "Induction " + w.inductionStatus)} ${statusBadge(w.ojtStatus, "OJT " + w.ojtStatus)} <span class="badge l2">${onboardingStage(w).label}</span></div>
         </div>
         <div class="hero-actions">
           ${editing

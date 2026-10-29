@@ -24,7 +24,10 @@ forms.worker.addEventListener("submit", e => {
     document.getElementById("emp-id").value,
     document.getElementById("dob").value
   );
-  if (worker) showMessage(`Welcome ${worker.name}! (profile page coming next)`, "success");
+  if (worker) {
+    try { sessionStorage.setItem("wms-worker", worker.empId); } catch (err) { /* ignore */ }
+    window.location.href = `worker-profile.html?id=${encodeURIComponent(worker.empId)}`;
+  }
   else showMessage("Invalid Employee ID or Date of Birth", "error");
 });
 

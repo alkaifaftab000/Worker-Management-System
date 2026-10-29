@@ -51,6 +51,7 @@ tbody tr:hover { background: #fff7f2; }
 .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .78rem; font-weight: 600; }
 .badge.done { background: #e3f6ea; color: #1e8449; }
 .badge.pending { background: #fff1e6; color: #c25412; }
+.badge.progress { background: #e8edff; color: #1d2c8f; }
 .badge.failed { background: #fde8e8; color: #c0392b; }
 .badge.l1 { background: #eef0f5; color: #555; }
 .badge.l2 { background: #e8edff; color: #1d2c8f; }
@@ -88,6 +89,7 @@ tbody tr:hover { background: #fff7f2; }
 .step.done { background: #e3f6ea; }
 .step.failed { background: #fde8e8; }
 .step.pending { background: #fff1e6; }
+.step.progress { background: #e8edff; }
 .arrow { color: var(--muted); }
 
 @media (max-width: 480px) {

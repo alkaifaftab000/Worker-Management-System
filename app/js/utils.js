@@ -6,8 +6,20 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
 }
 
-function statusBadge(status) {
-  return `<span class="badge ${status.toLowerCase()}">${status}</span>`;
+// "In Progress" -> class "progress"
+const statusClass = s => String(s).toLowerCase().replace("in progress", "progress");
+
+function statusBadge(status, label = status) {
+  return `<span class="badge ${statusClass(status)}">${label}</span>`;
+}
+
+// Onboarding: Day 1 joining + induction, Day 2-4 OJT (3 days), Day 5+ on line
+function onboardingStage(w) {
+  if (w.inductionStatus !== "Done") return { key: "induction", label: "Induction (Day 1)" };
+  if (w.ojtStatus === "In Progress") return { key: "ojt", label: `OJT Day ${w.ojtDay || 1} of 3` };
+  if (w.ojtStatus === "Pending") return { key: "ojt", label: "OJT starts next day" };
+  if (w.ojtStatus === "Failed") return { key: "retrain", label: "OJT re-training" };
+  return { key: "line", label: "On line" };
 }
 
 function skillBadge(level) {

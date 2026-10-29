@@ -57,6 +57,7 @@
 .tl-step.done { background: #e3f6ea; }
 .tl-step.pending { background: #fff1e6; }
 .tl-step.failed { background: #fde8e8; }
+.tl-step.progress { background: #e8edff; }
 
 /* Training & Performance */
 .assume-note { background: #fff4ee; border-left: 4px solid var(--orange); border-radius: 6px; padding: 10px 12px; font-size: .82rem; margin-bottom: 14px; }

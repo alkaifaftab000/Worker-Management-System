@@ -4,7 +4,7 @@ const Profile = (() => {
   const overlay = document.getElementById("overlay");
 
   function step(title, status, score) {
-    return `<div class="step ${status.toLowerCase()}">${title}<strong>${score ?? "—"}</strong>${status}</div>`;
+    return `<div class="step ${statusClass(status)}">${title}<strong>${score ?? "—"}</strong>${status}</div>`;
   }
 
   function open(w) {

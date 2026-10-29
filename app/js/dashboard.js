@@ -19,7 +19,8 @@ function renderKpis() {
     { label: "Semi-skilled", value: count(w => w.skillLevel === 2), hint: "Level 2", color: "#3b5bdb", set: { skill: "2" } },
     { label: "Unskilled", value: count(w => w.skillLevel === 1), hint: "Level 1", color: "#888", set: { skill: "1" } },
     { label: "Induction Pending", value: count(w => w.inductionStatus !== "Done"), hint: "Pending / failed", color: "#c0392b", set: {} },
-    { label: "OJT Pending", value: count(w => w.ojtStatus === "Pending"), hint: "Awaiting 3-day OJT", color: "var(--orange)", set: { ojt: "Pending" } },
+    { label: "In OJT", value: count(w => w.ojtStatus === "In Progress"), hint: "Day 2–4 · 3-day OJT", color: "#3b5bdb", set: { ojt: "In Progress" } },
+    { label: "OJT Pending", value: count(w => w.ojtStatus === "Pending"), hint: "Induction done / due", color: "var(--orange)", set: { ojt: "Pending" } },
   ];
   el("kpis").innerHTML = cards.map((c, i) => `
     <div class="kpi" data-i="${i}" style="--kpi:${c.color}">

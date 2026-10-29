@@ -1,15 +1,12 @@
 // Mock auth – replace with real API calls later
 const Auth = (() => {
-  const workers = [
-    { id: "PE1272", dob: "1995-05-10", name: "Neelam" },
-    { id: "94889", dob: "1998-01-22", name: "Shalu" },
-  ];
   const staff = [
     { email: "hr@iljin.com", password: "admin123", role: "HR" },
   ];
 
+  // Worker login = Employee ID + DOB against the worker data (Store)
   function loginWorker(id, dob) {
-    return workers.find(w => w.id.toUpperCase() === id.trim().toUpperCase() && w.dob === dob) || null;
+    return Store.load().find(w => String(w.empId).toUpperCase() === id.trim().toUpperCase() && w.dob === dob) || null;
   }
 
   function loginStaff(email, password) {

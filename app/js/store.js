@@ -1,6 +1,6 @@
 // Worker data store – localStorage for now, swap for API later
 const Store = (() => {
-  const KEY = "wms-workers-v2";   // bump when data shape changes
+  const KEY = "wms-workers-v3";   // bump when data shape changes
 
   function load() {
     try {

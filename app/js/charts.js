@@ -35,12 +35,9 @@ const Charts = (() => {
 
   // Doughnut: where each worker is in onboarding
   function renderOnboard(workers) {
-    const stage = w =>
-      w.inductionStatus !== "Done" ? "Induction pending/failed"
-      : w.ojtStatus === "Pending" ? "OJT pending"
-      : w.ojtStatus === "Failed" ? "OJT failed"
-      : "On line (OJT done)";
-    const labels = ["On line (OJT done)", "OJT pending", "OJT failed", "Induction pending/failed"];
+    const NAMES = { induction: "Induction (Day 1)", ojt: "In / awaiting OJT", retrain: "OJT re-training", line: "On line" };
+    const stage = w => NAMES[onboardingStage(w).key];
+    const labels = ["On line", "In / awaiting OJT", "OJT re-training", "Induction (Day 1)"];
     const data = labels.map(l => workers.filter(w => stage(w) === l).length);
     onboardChart?.destroy();
     onboardChart = new Chart(document.getElementById("chart-onboard"), {

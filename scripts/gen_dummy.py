@@ -18,14 +18,25 @@ for i in range(50):
     first = random.choice(male if g == "M" else female)
     name = f"{first} {random.choice(last)}"
     dept = random.choice(list(depts)); proc = random.choice(depts[dept])
-    doj = today - datetime.timedelta(days=random.choice([0, 1, 2, 3, 5, 8] + list(range(10, 400, 7))))
-    days = (today - doj).days
-    ind_score = random.randint(12, 20) if days > 0 or random.random() < .5 else None
-    ind_status = "Done" if ind_score and ind_score >= 14 else ("Failed" if ind_score else "Pending")
-    if ind_status == "Done" and days >= 3:
-        ojt_score = random.randint(10, 20); ojt_status = "Done" if ojt_score >= 12 else "Failed"
+    # Onboarding: Day 1 = joining + HR induction, Day 2-4 = 3-day OJT, Day 5+ = on line
+    # Mix: first 16 at induction (joined today), next 4 in OJT, rest on line
+    if i < 16: days = 0
+    elif i < 20: days = (i - 16) % 3 + 1
+    else: days = random.choice([4, 6, 9] + list(range(12, 400, 7)))
+    doj = today - datetime.timedelta(days=days)
+    ojt_day = None
+    if days == 0:
+        # Induction day: test pending, passed or failed (induction test is /100, pass 40%)
+        r = random.random()
+        ind_score = None if r < .4 else random.randint(20, 39) if r < .55 else random.randint(45, 95)
+        ind_status = "Pending" if ind_score is None else "Failed" if ind_score < 40 else "Done"
+        ojt_score, ojt_status = None, "Pending"
     else:
-        ojt_score = None; ojt_status = "Pending"
+        ind_score = random.randint(45, 95); ind_status = "Done"
+        if days <= 3:
+            ojt_score, ojt_status, ojt_day = None, "In Progress", days   # OJT day 1-3
+        else:
+            ojt_score = random.randint(30, 100); ojt_status = "Done" if ojt_score >= 40 else "Failed"
     # Quarterly supervisor assessments (every 90 days after OJT) – SOP: total /40 -> level
     assessments, trainings = [], []
     topics = ["5S & 3R", "WI Awareness & SSI", "Work Safety", "ESD Awareness", "CTP/CTQ", "MES Awareness", "Defect Awareness"]
@@ -53,7 +64,7 @@ for i in range(50):
         "doj": doj.isoformat(), "supervisor": random.choice(sups),
         "dob": datetime.date(random.randint(1985, 2006), random.randint(1, 12), random.randint(1, 28)).isoformat(),
         "inductionStatus": ind_status, "inductionScore": ind_score,
-        "ojtStatus": ojt_status, "ojtScore": ojt_score, "skillLevel": level, "assessments": assessments, "trainings": trainings,
+        "ojtStatus": ojt_status, "ojtScore": ojt_score, "ojtDay": ojt_day, "skillLevel": level, "assessments": assessments, "trainings": trainings,
         "phone": f"9{random.randint(100000000, 999999999)}",
         "email": f"{name.lower().replace(' ', '.')}{i}@gmail.com",
         "address": f"H.No. {random.randint(1, 400)}, Sector {random.randint(1, 150)}, {random.choice(cities)}, U.P.",
