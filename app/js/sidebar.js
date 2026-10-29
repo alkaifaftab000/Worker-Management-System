@@ -2,15 +2,15 @@
 // Hamburger toggles between icons-only and icons + labels
 (() => {
   const sidebar = document.getElementById("sidebar");
-  const page = sidebar.dataset.page;
+  const page = sidebar.dataset.page || new URLSearchParams(location.search).get("m");
   const icon = path => `<svg viewBox="0 0 24 24">${path}</svg>`;
   const links = [
     { id: "dashboard", href: "dashboard.html", label: "Dashboard", icon: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>' },
     { id: "workers", href: "workers.html", label: "Workers", icon: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M16 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/>' },
     { id: "induction", href: "induction.html", label: "Induction", icon: '<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4M10 8.5v5l4-2.5z"/>' },
     { id: "ojt", href: "ojt.html", label: "OJT", icon: '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>' },
-    { id: "skills", href: "#", label: "Skill Matrix", icon: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>' },
-    { id: "licenses", href: "#", label: "Licenses", icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2.5"/><path d="M14 10h5M14 14h3"/>' },
+    { id: "skills", href: "phase2.html?m=skills", label: "Skill Matrix", icon: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>' },
+    { id: "licenses", href: "phase2.html?m=licenses", label: "Licenses", icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2.5"/><path d="M14 10h5M14 14h3"/>' },
   ];
 
   sidebar.innerHTML = `

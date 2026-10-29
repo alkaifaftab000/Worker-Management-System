@@ -23,7 +23,7 @@
 
     Uploads.fileSlot(el("ojt-material"), `${key}-ppt`, "Training PPT / PDF");
     const mountTest = () => {
-      Uploads.testUploader(el("test-upload"), key, mountTest);
+      Uploads.testUploader(el("test-upload"), key, mountTest, tab.test.passPercent);
       TestEngine.mount({
         container: el("test-body"), key, defaultTest: tab.test,
         label: `OJT – ${Lang.split(tab.title).en}`,

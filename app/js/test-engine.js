@@ -5,7 +5,8 @@ const TestEngine = (() => {
 
   function mount(cfg) {
     const box = cfg.container;
-    const test = Uploads.getTest(cfg.key) || cfg.defaultTest;
+    const base = Uploads.getTest(cfg.key) || cfg.defaultTest;
+    const test = { ...base, passPercent: Uploads.getPass(cfg.key, base.passPercent) };
     const mcqs = test.sections.flatMap(s => s.questions.filter(q => q.type === "mcq"));
     const totalMarks = mcqs.reduce((s, q) => s + q.marks, 0);
     const workers = Store.load();

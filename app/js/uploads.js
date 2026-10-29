@@ -1,6 +1,15 @@
 // Uploads: test papers (Excel -> questions, localStorage) and PPT/PDF material (IndexedDB)
 const Uploads = (() => {
   const TEST_KEY = k => `wms-test-${k}`;
+  const PASS_KEY = k => `wms-pass-${k}`;
+
+  // HR-defined minimum pass % per test (falls back to the paper's default)
+  function getPass(key, fallback = 40) {
+    try { const v = Number(localStorage.getItem(PASS_KEY(key))); return v > 0 ? v : fallback; } catch (e) { return fallback; }
+  }
+  function setPass(key, v) {
+    try { localStorage.setItem(PASS_KEY(key), String(v)); } catch (e) { /* ignore */ }
+  }
 
   // ---------- Test papers ----------
   // Template columns: Section | Type | Question (English) | Question (Hindi) | Option A-D | Answer | Marks
@@ -44,8 +53,9 @@ const Uploads = (() => {
   }
 
   // Renders upload / template / reset controls for a test. onChange() is called after upload or reset.
-  function testUploader(target, key, onChange) {
+  function testUploader(target, key, onChange, defaultPass = 40) {
     const up = getTest(key);
+    const pass = getPass(key, defaultPass);
     target.innerHTML = `
       <div class="upload-bar">
         <span class="up-ico">📄</span>
@@ -53,7 +63,15 @@ const Uploads = (() => {
         <label class="up-btn">Upload Excel<input type="file" accept=".xlsx,.xls" hidden></label>
         <button type="button" class="up-link" data-act="tpl">Template</button>
         ${up ? `<button type="button" class="up-link" data-act="reset">Reset</button>` : ""}
+        <label class="pass-set" title="Minimum marks to pass">Pass mark
+          <input type="number" min="1" max="100" value="${pass}"> %
+        </label>
       </div>`;
+    target.querySelector(".pass-set input").onchange = e => {
+      const v = Math.min(100, Math.max(1, Number(e.target.value) || defaultPass));
+      setPass(key, v);
+      onChange();
+    };
     target.querySelector("input").onchange = async e => {
       try {
         const test = await parseTestExcel(e.target.files[0]);
@@ -99,5 +117,5 @@ const Uploads = (() => {
     if (del) del.onclick = async () => { await delFile(key); fileSlot(target, key, label); };
   }
 
-  return { getTest, testUploader, fileSlot, downloadTemplate };
+  return { getTest, getPass, testUploader, fileSlot, downloadTemplate };
 })();

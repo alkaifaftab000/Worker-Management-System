@@ -64,7 +64,7 @@
   Lang.toggle(el("lang"));
   Uploads.fileSlot(el("ppt-slot"), "induction-ppt", "Induction PPT");
   const mountTest = () => {
-    Uploads.testUploader(el("test-upload"), "induction", mountTest);
+    Uploads.testUploader(el("test-upload"), "induction", mountTest, INDUCTION_TEST.passPercent);
     TestEngine.mount({
       container: el("test-body"), key: "induction", defaultTest: INDUCTION_TEST, label: "Induction Test",
       onSaved: (w, r) => Object.assign(w, { inductionScore: r.score, inductionStatus: r.passed ? "Done" : "Failed" }),
